@@ -122,3 +122,13 @@ WiFi connected successfully
 Got IP: 
 HTTP server started
 ```
+Para ver el fichero html creado, tan solo hay que sustituir el contenido de la variable de HTML en el trozo de código en el que hemos escrito la página web de prueba. Es decir, escrivimos `String HTML = "fitxer_html.MD.html";`
+en vez de:
+```
+String HTML = "<!DOCTYPE html>\
+  <html>\
+  <body>\
+  <h1>My Primera Pagina con ESP32 - Station Mode &#128522;</h1>\
+  </body>\
+  </html>";
+```
