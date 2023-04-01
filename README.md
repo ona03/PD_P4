@@ -83,8 +83,6 @@ String HTML = "<!DOCTYPE html>\
   </body>\
   </html>";
 
-// Handle root url (/)
-
 void setup() {
   Serial.begin(115200);
   Serial.println("Try Connecting to ");
@@ -131,4 +129,44 @@ String HTML = "<!DOCTYPE html>\
   <h1>My Primera Pagina con ESP32 - Station Mode &#128522;</h1>\
   </body>\
   </html>";
+```
+
+## Comunicación bluetooth mediante el móvil
+
+Para esta aplicación, incluimos la libreria `BluetoothSerial.h`. Las tres líneas siguientes sirven para comprobar que las configuraciones de Bluetooth están habilitadas en el Software Development Kit (SDK), es decir, en un conjunto de herramientas software que sirven para crear aplicaciones mediante un compilador, un depurador (debugger) o un framework, si no es así, entonces hay que recompilarlo.
+
+```
+#include <Arduino.h>
+#include "BluetoothSerial.h"
+#if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
+#error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
+#endif
+```
+Ahora, iniciamos una instancia de esta misma librería, llamándola `SerialBT`.
+```
+BluetoothSerial SerialBT;
+```
+Y ya podemos empezar el `setup()`. Abrimos el puerto serie a `115200`, comenzamos con la función `.begin()`, iniciando el servicio BT con el nombre `ESP32test` y anunciamos por el terminal que la connexión está preparada para ser establecida.
+```
+void setup() {
+  Serial.begin(115200);
+  SerialBT.begin("ESP32test"); //Bluetooth device name
+  Serial.println("The device started, now you can pair it with bluetooth!");
+}
+```
+Dentro del bucle, simplemente recibimos lo que nos entra por el puerto SerialBT a la consola y viceversa. Es decir, copiamos lo que llega de SerialBT y enviamos al puerto lo que escrivimos desde la consola con la condición que los puertos estén libres.
+```
+void loop() {
+  if (Serial.available()) {
+  SerialBT.write(Serial.read());
+  }
+  if (SerialBT.available()) {
+  Serial.write(SerialBT.read());
+  }
+  delay(20);
+}
+```
+Para que funcione correctamente, tenemos que descargar la aplicación Serial Bluetooth Terminal y configurarla de modo que el puerto serie esté connectado con nuestro microprocesador ESP32. La salida por el terminal es la siguiente:
+```
+The device started, now you can pair it with bluetooth!
 ```
