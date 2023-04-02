@@ -189,9 +189,11 @@ Para que funcione correctamente, tenemos que descargar la aplicación Serial Blu
 
 ![image](/images/bluetooth.jpg)
 
-La salida por el terminal es la siguiente:
+Y la salida por el terminal es:
 ```c
 The device started, now you can pair it with bluetooth!
 
 ahora podemos comunicarnos desde un móvil a un terminal del ordenador
 ```
+
+## 
