@@ -1,5 +1,5 @@
 #include <Arduino.h>
-/*
+
 //html
 #include <WiFi.h>
 #include <WebServer.h>
@@ -14,7 +14,24 @@ void handle_root();
 // Object of WebServer(HTTP port, 80 is defult)
 
 // HTML & CSS contents which display on web server
-String HTML = "<paginaWebMD.html>";
+extern String HTML;
+/*
+String HTML = "<!DOCTYPE html >
+</body>
+
+<body style='background-color:#d4ffda; font-family:calibri;'>
+
+<center>
+    <h1 style='background-color:#023f1b; color:#d4ffda;'> PROCESADORES DIGITALES</h1>
+    <h1 style='background-color:#023f1b; color:#d4ffda;'> Práctica 4: WIFI y Bluetooth</h1>
+    <p style='color:#023f1b;'> Generación de una página web: connexión por puerto serie a red WIFI </p>
+</center>
+
+<center>
+    <img src='images/image_processor.jpg' alt='image' width='700' height='300'/>
+</center>
+
+</body>";*/
 
 // Handle root url (/)
 
@@ -45,7 +62,7 @@ void loop() {
 void handle_root() {
   server.send(200, "text/html", HTML);
 }
-
+/*
 // bluetooth (conversa)
 #include "BluetoothSerial.h"
 #if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
@@ -106,7 +123,7 @@ void loop() {
   pBLEScan->clearResults();   // delete results fromBLEScan buffer to release memory
   delay(2000);
 }
-*/
+
 
 //leds amb ip
 
@@ -260,3 +277,4 @@ void loop(){
     Serial.println("");
   }
 }
+*/

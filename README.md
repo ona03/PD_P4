@@ -142,7 +142,7 @@ Y la visualización de la página web:
 
 Para ver el fichero html creado, tan solo hay que cambiar el contenido de la variable de HTML en el trozo de código en el que hemos escrito la página web de prueba. Es decir, sustituimos por `String HTML = "fitxer_html.MD.html"` esa línea de código. Y la visualización del fichero HTML generado es la siguiente:
 
-![html](/images)
+![html](/images/html2.png)
 
 ## Comunicación mediante bluetooth
 
@@ -190,10 +190,10 @@ Para que funcione correctamente, tenemos que descargar la aplicación Serial Blu
 ![image](/images/bluetooth.jpg)
 
 Y la salida por el terminal es:
-```c
+```cpp
 The device started, now you can pair it with bluetooth!
 
 ahora podemos comunicarnos desde un móvil a un terminal del ordenador
 ```
 
-## 
+## LEDS???
