@@ -1,12 +1,12 @@
-
-//html
 #include <Arduino.h>
+/*
+//html
 #include <WiFi.h>
 #include <WebServer.h>
 
 // SSID & Password
-const char* ssid = "Xiaomi_11T_Pro";// "eel-lab029-02 9193"; // Enter your SSID here
-const char* password = "f5cbd8a82232";//"Q75a(442"; //Enter your Password here
+const char* ssid = "XARTIC369";//"Xiaomi_11T_Pro";// "eel-lab029-02 9193"; // Enter your SSID here
+const char* password = "xarticcr369"; //"f5cbd8a82232";//"Q75a(442"; //Enter your Password here
 
 WebServer server(80);
 void handle_root();
@@ -14,12 +14,7 @@ void handle_root();
 // Object of WebServer(HTTP port, 80 is defult)
 
 // HTML & CSS contents which display on web server
-String HTML = "<!DOCTYPE html>\
-  <html>\
-  <body>\
-  <h1>My Primera Pagina con ESP32 - Station Mode &#128522;</h1>\
-  </body>\
-  </html>";
+String HTML = "<paginaWebMD.html>";
 
 // Handle root url (/)
 
@@ -73,9 +68,9 @@ Serial.write(SerialBT.read());
 }
 delay(20);
 }
+
 //bluetooth (scan everything)
 
-#include <Arduino.h>
 #include <BLEDevice.h>
 #include <BLEUtils.h>
 #include <BLEScan.h>
@@ -111,7 +106,7 @@ void loop() {
   pBLEScan->clearResults();   // delete results fromBLEScan buffer to release memory
   delay(2000);
 }
-
+*/
 
 //leds amb ip
 
@@ -119,8 +114,8 @@ void loop() {
 #include <WiFi.h>
 
 // Replace with your network credentials
-const char* ssid = "Xiaomi_11T_Pro";// "eel-lab029-02 9193"; // Enter your SSID here
-const char* password = "f5cbd8a82232";//"Q75a(442"; //Enter your Password here
+const char* ssid = "XARTIC369";// "eel-lab029-02 9193"; // Enter your SSID here
+const char* password = "xarticcr369";//"Q75a(442"; //Enter your Password here
 
 // Set web server port number to 80
 WiFiServer server(80);

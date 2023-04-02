@@ -84,8 +84,8 @@ Por lo que juntándolo todo, queda el siguiente código:
 #include <WebServer.h>
 
 // SSID & Password
-const char* ssid = "NetworkName";
-const char* password = "*********";
+const char* ssid = "XARTIC369";
+const char* password = "**********";
 
 WebServer server(80);
 void handle_root();
@@ -129,26 +129,22 @@ void handle_root() {
 
 Con una salida:
 
-```c
-Try Connecting to 'NetworkName'
-..........
+```cpp
+Try Connecting to 'XARTIC369'
+.......
 WiFi connected successfully
-Got IP: 
+Got IP: 192.168.0.105
 HTTP server started
 ```
+Y la visualización de la página web:
 
-Para ver el fichero html creado, tan solo hay que cambiar el contenido de la variable de HTML en el trozo de código en el que hemos escrito la página web de prueba. Es decir, sustituimos `String HTML = "fitxer_html.MD.html";` en el lugar de:
+![página web](/images/hmtl1.png)
 
-```cpp
-String HTML = "<!DOCTYPE html>\
-  <html>\
-  <body>\
-  <h1>My Primera Pagina con ESP32 - Station Mode &#128522;</h1>\
-  </body>\
-  </html>";
-```
+Para ver el fichero html creado, tan solo hay que cambiar el contenido de la variable de HTML en el trozo de código en el que hemos escrito la página web de prueba. Es decir, sustituimos por `String HTML = "fitxer_html.MD.html"` esa línea de código. Y la visualización del fichero HTML generado es la siguiente:
 
-## Comunicación bluetooth mediante el móvil
+![html](/images)
+
+## Comunicación mediante bluetooth
 
 Para esta aplicación, incluimos la libreria `BluetoothSerial.h`. Las tres líneas siguientes sirven para comprobar que las configuraciones de Bluetooth están habilitadas en el Software Development Kit (SDK), es decir, en un conjunto de herramientas software que sirven para crear aplicaciones mediante un compilador, un depurador (debugger) o un framework, si no es así, entonces hay que recompilarlo.
 
@@ -189,7 +185,13 @@ void loop() {
   delay(20);
 }
 ```
-Para que funcione correctamente, tenemos que descargar la aplicación Serial Bluetooth Terminal y configurarla de modo que el puerto serie esté connectado con nuestro microprocesador ESP32. La salida por el terminal es la siguiente:
+Para que funcione correctamente, tenemos que descargar la aplicación Serial Bluetooth Terminal y configurarla de modo que el puerto serie esté connectado con nuestro microprocesador ESP32. Así pues, desde la aplicación del móvil se ve de la siguiente forma:
+
+![image](/images/bluetooth.jpg)
+
+La salida por el terminal es la siguiente:
 ```c
 The device started, now you can pair it with bluetooth!
+
+ahora podemos comunicarnos desde un móvil a un terminal del ordenador
 ```
