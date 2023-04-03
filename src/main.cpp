@@ -15,23 +15,6 @@ void handle_root();
 
 // HTML & CSS contents which display on web server
 extern String HTML;
-/*
-String HTML = "<!DOCTYPE html >
-</body>
-
-<body style='background-color:#d4ffda; font-family:calibri;'>
-
-<center>
-    <h1 style='background-color:#023f1b; color:#d4ffda;'> PROCESADORES DIGITALES</h1>
-    <h1 style='background-color:#023f1b; color:#d4ffda;'> Práctica 4: WIFI y Bluetooth</h1>
-    <p style='color:#023f1b;'> Generación de una página web: connexión por puerto serie a red WIFI </p>
-</center>
-
-<center>
-    <img src='images/image_processor.jpg' alt='image' width='700' height='300'/>
-</center>
-
-</body>";*/
 
 // Handle root url (/)
 
@@ -62,7 +45,7 @@ void loop() {
 void handle_root() {
   server.send(200, "text/html", HTML);
 }
-/*
+
 // bluetooth (conversa)
 #include "BluetoothSerial.h"
 #if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
@@ -277,4 +260,39 @@ void loop(){
     Serial.println("");
   }
 }
-*/
+
+#include <BLEDevice.h>
+#include <BLEUtils.h>
+#include <BLEServer.h>
+
+// See the following for generating UUIDs:
+// https://www.uuidgenerator.net/
+
+#define SERVICE_UUID        "4fafc201-1fb5-459e-8fcc-c5c9c331914b"
+#define CHARACTERISTIC_UUID "beb5483e-36e1-4688-b7f5-ea07361b26a8"
+
+void setup() {
+  Serial.begin(115200);
+  Serial.println("Starting BLE work!");
+
+  BLEDevice::init("myESP32");
+  BLEServer *pServer = BLEDevice::createServer();
+  BLEService *pService = pServer->createService(SERVICE_UUID);
+  BLECharacteristic *pCharacteristic = pService->createCharacteristic(
+                                         CHARACTERISTIC_UUID,
+                                         BLECharacteristic::PROPERTY_READ |
+                                         BLECharacteristic::PROPERTY_WRITE
+                                       );
+
+  pCharacteristic->setValue("ona desde la tierra"); //6f6e61206465736465206c6120746965727261
+  pService->start();
+  // BLEAdvertising *pAdvertising = pServer->getAdvertising();  // this still is working for backward compatibility 
+  BLEAdvertising *pAdvertising = BLEDevice::getAdvertising();
+  pAdvertising->start();
+  Serial.println("Characteristic defined! Now you can read it in your phone!");
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  delay(2000);
+}
